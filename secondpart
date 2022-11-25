@@ -3,16 +3,16 @@ class Node:
         self.left = None self.right = None
     def inorder(root):
         if root is not None:
-        inorder(root.left)
-        print (root.key,end=" ") inorder(root.right)
+            inorder(root.left)
+            print (root.key,end=" ") inorder(root.right)
 # ф-я для вставки def insert(node, key):
         if node is None:
-        return Node(key)
+            return Node(key)
 # рекурсія
         if key < node.key:
-        node.left = insert(node.left, key) else:
-        node.right = insert(node.right, key)
-        return node #мінімальний елемент
+            node.left = insert(node.left, key) else:
+            node.right = insert(node.right, key)
+            return node #мінімальний елемент
     def minValueNode(node): current = node
 # пошук найбільш лівого елемента while(current.left is not None):
         current = current.left return current
@@ -21,35 +21,35 @@ class Node:
         if root is None: return root
         if key < root.key:
 
-        root.left = deleteNode(root.left, key)
+            root.left = deleteNode(root.left, key)
         elif(key > root.key):
-        root.right = deleteNode(root.right, key)
+            root.right = deleteNode(root.right, key)
         else:
 # дерево без нащадків if root.left is None:
-        temp = root.right root = None return temp
+            temp = root.right root = None return temp
         elif root.right is None: temp = root.left
-        root = None return temp
+            root = None return temp
 # з двома нащадками
-        temp = minValueNode(root.right)
-        root.key = temp.key
-        root.right = deleteNode(root.right, temp.key)
-        return root def minimum(root): if root==None:
-        return float('+inf') else:
-        res=root.key lres=minimum(root.left) rres=minimum(root.right) if lres<res:
-        res=lres if rres<res: res=rres
-        return res
+            temp = minValueNode(root.right)
+            root.key = temp.key
+            root.right = deleteNode(root.right, temp.key)
+            return root def minimum(root): if root==None:
+            return float('+inf') else:
+            res=root.key lres=minimum(root.left) rres=minimum(root.right) if lres<res:
+            res=lres if rres<res: res=rres
+            return res
     def tree_successor(root):
         if root.right!=None:
-        return minimum(root.right)
-        y=root.parent
-        while(y!=None and x==y.right):
-        x=y
+            return minimum(root.right)
+            y=root.parent
+            while(y!=None and x==y.right):
+            x=y
 
-        y=y.parent return y.key
+            y=y.parent return y.key
     def search_node(root,data):#пошук елементу if data < root.key:
         if root.left is None:
-        print(data," not found") root=search_node(root.left,data)
-        print(root.key,' is found ') elif data > root.key:
+            print(data," not found") root=search_node(root.left,data)
+            print(root.key,' is found ') elif data > root.key:
     if root.right is None:
         print(data," not found") root=search_node(root.right,data)
         print(root.key,' is found ') else:
